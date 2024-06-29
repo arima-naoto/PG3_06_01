@@ -1,4 +1,5 @@
 #include <Novice.h>
+#include <StageScene.h>
 
 const char kWindowTitle[] = "GC2A_02_アリマ_ナオト";
 
@@ -11,6 +12,9 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	// キー入力結果を受け取る箱
 	char keys[256] = { 0 };
 	char preKeys[256] = { 0 };
+
+	StageScene* scene = new StageScene();
+	scene->Initialize();
 
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
@@ -25,6 +29,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 
+		scene->Update();
+
 		///
 		/// ↑更新処理ここまで
 		///
@@ -32,6 +38,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
+
+		scene->Draw();
 
 		///
 		/// ↑描画処理ここまで
@@ -48,5 +56,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの終了
 	Novice::Finalize();
+	delete scene;
 	return 0;
 }
