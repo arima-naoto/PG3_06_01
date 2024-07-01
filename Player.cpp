@@ -1,4 +1,5 @@
 #include "Player.h"
+#include <Novice.h>
 
 /// <summary>
 /// delete処理
@@ -40,7 +41,7 @@ void Player::Draw() {
 void Player::MoveRight() 
 {
 	//演算子を使用して、自キャラを右方向に動かす
-	this->pos_ += Vector2(this->speed_, 0);
+	this->pos_.x += this->speed_;
 }
 
 /// <summary>
@@ -49,5 +50,5 @@ void Player::MoveRight()
 void Player::MoveLeft() 
 {
 	//演算子を使用して、自キャラを左方向に動かす
-	this->pos_ -= Vector2(this->speed_, 0);
+	this->pos_.x -= this->speed_;
 }
